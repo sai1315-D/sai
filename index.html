@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Education Model Skeleton</title>
+    <style>
+        /* --- CSS Variables for Easy Theming --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #913333;
+            --light-text: #666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --hover-shadow: 0 15px 30px rgba(0,0,0,0.2); /* New variable for animation */
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            transition: all 0.3s ease; /* Smooths out any text animations */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            cursor: default;
+        }
+
+        /* Title Animation */
+        h1:hover {
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* --- Card Style Wrapper --- */
+        .card {
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+            
+            /* Animation Setup */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: translateY(-10px); /* Lifts the card up */
+            box-shadow: var(--hover-shadow); /* Deepens the shadow */
+        }
+
+        /* --- Section I: Core Concept (Grid) --- */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .concept-box {
+            background-color: #eef2f3;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-style: italic;
+            cursor: pointer;
+            
+            /* Animation Setup */
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        /* Box Hover Effect */
+        .concept-box:hover {
+            background-color: #fff;
+            transform: scale(1.05); /* Grows slightly */
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- Section II: Timeline/Cycle --- */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .step {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px dashed var(--accent-color);
+            font-style: italic;
+            
+            /* Animation Setup */
+            transition: all 0.3s ease;
+        }
+
+        /* Timeline Step Hover Effect */
+        .step:hover {
+            border-left-style: solid;
+            padding-left: 30px; /* Nudges text to the right */
+            background: rgba(255,255,255,0.5);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--primary-color);
+        }
+
+        .step-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+        
+        .step:hover .step-badge {
+            background: var(--primary-color); /* Badge changes color on hover */
+        }
+
+        /* --- Section III: Table --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            overflow: hidden; /* Needed for rounded corners on hover */
+            border-radius: var(--border-radius);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-style: italic;
+            transition: background-color 0.2s ease;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-style: italic;
+        }
+
+        /* Table Row Hover Effect */
+        tr {
+            transition: transform 0.2s ease;
+        }
+
+        tr:hover {
+            background-color: #e3f2fd; /* Light blue highlight */
+            transform: scale(1.01); /* Very subtle pop */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* --- Section IV: Nervous System (Flex) --- */
+        .tech-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-item {
+            flex: 1;
+            min-width: 200px;
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-style: italic;
+            cursor: pointer;
+            
+            /* Animation Setup */
+            transition: all 0.4s ease;
+        }
+
+        .tech-item strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Tech Item Hover Effect */
+        .tech-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .tech-item:hover strong {
+            color: var(--accent-color); /* Change title color inside box */
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .concept-grid { grid-template-columns: 1fr; }
+            .tech-wrapper { flex-direction: column; }
+            table, thead, tbody, th, td, tr { display: block; }
+            th { display: none; }
+            td {
+                position: relative;
+                padding-left: 50%;
+                border-bottom: 1px solid #eee;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                font-weight: bold;
+            }
+            /* Disable some transforms on mobile to prevent scrolling issues */
+            .card:hover, .concept-box:hover, .tech-item:hover {
+                transform: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align: center;">
+            <h1>Hybrid Education Model</h1>
+        </div>
+
+        <section class="card">
+            <h2>I. The Core Concept (The Spine)</h2>
+            <p><em>An ecosystem where online and offline components rely on each other.</em></p>
+            <div class="concept-grid">
+                <div class="concept-box">
+                    <h3>Online (Asynchronous)</h3>
+                    <p>Information delivery, rote practice, readings.</p>
+                </div>
+                <div class="concept-box">
+                    <h3>In-Person (Synchronous)</h3>
+                    <p>Debates, labs, collaborative problem solving.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>II. The Operational Cycle</h2>
+            <div class="timeline">
+                <div class="step">
+                    <span class="step-badge">Step 1: Pre-Load</span>
+                    <div class="step-title">Online | Asynchronous</div>
+                    <p>Students engage with lectures/readings <em>before</em> class to acquire foundational knowledge.</p>
+                </div>
+                <div class="step">
+                    <span class="step-badge">Step 2: High-Touch</span>
+                    <div class="step-title">In-Person | Live</div>
+                    <p>Real-time Q&A, group projects, and debate. Application of the pre-load material.</p>
+                </div>
+                <div class="step">
+                    <span class="step-badge">Step 3: Deep Dive</span>
+                    <div class="step-title">Online | Assessment</div>
+                    <p>Quizzes and digital projects to verify mastery and retention.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>III. Common Architectures</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Structure</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Model">Rotation Model</td>
+                        <td data-label="Structure">Rotate between online stations and teacher-led stations.</td>
+                        <td data-label="Best For">K-12 Schools</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Model">Flex Model</td>
+                        <td data-label="Structure">Online learning is the backbone; teachers float for support.</td>
+                        <td data-label="Best For">Self-starters / College</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Model">A La Carte</td>
+                        <td data-label="Structure">Core classes in-person, specialized electives online.</td>
+                        <td data-label="Best For">Small Schools</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Model">Enriched Virtual</td>
+                        <td data-label="Structure">Mostly remote, with occasional campus visits.</td>
+                        <td data-label="Best For">Working Adults</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>IV. The Nervous System (Tech Stack)</h2>
+            <div class="tech-wrapper">
+                <div class="tech-item">
+                    <strong>LMS</strong>
+                    The Brain<br>(Canvas/Moodle)
+                </div>
+                <div class="tech-item">
+                    <strong>Comm Layer</strong>
+                    The Voice<br>(Teams/Zoom)
+                </div>
+                <div class="tech-item">
+                    <strong>Analytics</strong>
+                    Feedback Loop<br>(Data Tracking)
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
